@@ -57,7 +57,7 @@ public class CambioDivisa extends Application {
 		button = new Button();
 		button.setText("Cambiar");
 		button.setDefaultButton(true);
-		button.setOnAction(e -> Change(e));
+		button.setOnAction(e -> Check(e));
 		
 		HBox origenHbox = new HBox();
 		origenHbox.setSpacing(5);
@@ -79,6 +79,22 @@ public class CambioDivisa extends Application {
 		stage.setScene(scene);
 		stage.setTitle("Cambio de divisa");
 		stage.show();
+	}
+	
+	private void Check(ActionEvent e) {
+		
+		try
+		{
+			Integer.parseInt(textOrigin.getText());
+			Change(e);
+		}
+		catch(Exception ex)
+		{
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error");
+			alert.setContentText("Debe introducir un número");
+			alert.showAndWait();		
+		}		
 	}
 	
 	private void Change(ActionEvent e) {
